@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import logo from "../assets/logo.jpg";
 
 interface HeaderProps {
@@ -8,34 +9,84 @@ interface HeaderProps {
 
 export function Header({ onNavClick, currentSection }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'services', label: 'Services' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
-  ];
 
-  const showTopButton = ['services', 'projects'].includes(currentSection);
-  const circularGlowStyle = "p-2 border border-green-400 rounded-xl text-white transition-all shadow-lg hover:scale-110 bg-black ring-2 ring-green-400";
-  const singleLineButtonStyle = "px-4 py-1 border border-green-400 rounded-xl text-white transition hover:scale-105 bg-black hover:border-green-500";
+  const navItems = [
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "services", label: "Services" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" },
+  ];
 
   return (
     <header className="bg-black text-white py-4 px-6 fixed w-full top-0 z-50 shadow-lg">
       <nav className="flex justify-between items-center">
-        <div className="flex items-center space-x-2 text-2xl font-bold cursor-pointer" onClick={() => onNavClick('home')}>
+        {/* Logo */}
+        <div
+          className="flex items-center space-x-2 text-2xl font-bold cursor-pointer"
+          onClick={() => onNavClick("home")}
+        >
           <img src={logo} alt="Logo" className="h-10 w-10 animate-spin-slow" />
-          <span className="hover:text-green-400 transition-colors duration-300">Wattstrons Automations</span>
+          <span className="hover:text-green-400 transition-colors duration-300">
+            Wattstrons Automations
+          </span>
         </div>
-        <button className={`lg:hidden ${singleLineButtonStyle}`} onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? '✖' : '☰ Menu'}
+
+        {/* Mobile Menu Button */}
+        <button
+          className="lg:hidden px-4 py-2 border border-green-400 rounded-xl text-white transition hover:scale-105 bg-black hover:border-green-500"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? "✖" : "☰ Menu"}
         </button>
-        <ul className={`lg:flex items-center space-x-6 ${menuOpen ? 'flex flex-col items-center space-y-4 mt-4' : 'hidden'}`}>
-          {navItems.map(item => (
-            <li key={item.id} className="w-full text-center">
+
+        {/* Mobile Menu */}
+        <motion.ul
+  initial={{ x: "-100%" }}
+  animate={{ x: menuOpen ? "0%" : "-100%" }}
+  transition={{ duration: 0.3 }}
+  className={`fixed top-0 left-0 w-1/3 max-h-[300px] 
+    bg-black-500 bg-opacity-20 backdrop-blur-lg shadow-lg 
+    flex flex-col items-center space-y-4 py-4 rounded-br-lg lg:hidden 
+    border border-green-400`}
+>
+
+          {navItems.map((item, index) => (
+            <motion.li
+              key={item.id}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="w-full text-center"
+            >
+              <button
+                onClick={() => {
+                  onNavClick(item.id);
+                  setMenuOpen(false); // Close menu on click
+                }}
+                className={`px-4 py-2 border rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                  currentSection === item.id
+                    ? "text-green-400 border-green-400"
+                    : "hover:text-green-300 border-black"
+                }`}
+              >
+                {item.label}
+              </button>
+            </motion.li>
+          ))}
+        </motion.ul>
+
+        {/* Desktop Navigation */}
+        <ul className="hidden lg:flex items-center space-x-6">
+          {navItems.map((item) => (
+            <li key={item.id}>
               <button
                 onClick={() => onNavClick(item.id)}
-                className={`px-4 py-2 border rounded-lg transition-all duration-300 transform hover:scale-105 ${currentSection === item.id ? 'text-green-400 border-green-400' : 'hover:text-green-300 border-black'}`}
+                className={`px-4 py-2 border rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                  currentSection === item.id
+                    ? "text-green-400 border-green-400"
+                    : "hover:text-green-300 border-black"
+                }`}
               >
                 {item.label}
               </button>
@@ -43,13 +94,6 @@ export function Header({ onNavClick, currentSection }: HeaderProps) {
           ))}
         </ul>
       </nav>
-      {showTopButton && (
-        <div className="fixed bottom-4 right-4 hidden lg:block animate-pulse">
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className={circularGlowStyle}>
-            ↑ Top
-          </button>
-        </div>
-      )}
     </header>
   );
 }
