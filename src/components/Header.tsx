@@ -26,7 +26,7 @@ export function Header({ onNavClick, currentSection }: HeaderProps) {
           className="flex items-center space-x-2 text-2xl font-bold cursor-pointer"
           onClick={() => onNavClick("home")}
         >
-          <img src={logo} alt="Logo" className="h-10 w-10 animate-spin-slow" />
+          <img src={logo} alt="Logo" className="h-12 w-12 animate-spin-slow" />
           <span className="hover:text-green-400 transition-colors duration-300">
             Wattstrons Automations
           </span>
