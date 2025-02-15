@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import bg from "../assets/bg.webp"; // Ensure this path is correct
 
 interface HeroProps {
   onContactClick: () => void;
@@ -6,15 +7,19 @@ interface HeroProps {
 
 export function Hero({ onContactClick }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center text-center pt-16">
-      <div 
+    <section className="relative min-h-screen flex items-center justify-center text-center pt-16 overflow-hidden">
+      {/* Background Image */}
+      <motion.div 
         className="absolute inset-0 bg-cover bg-center bg-fixed"
-        style={{
-          backgroundImage: 'url("https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")',
-        }}
+        style={{ backgroundImage: `url(${bg})` }}
+        initial={{ scale: 1.2 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-60" />
-      </div>
+      </motion.div>
+
+      {/* Content */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -33,12 +38,12 @@ export function Hero({ onContactClick }: HeroProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="text-3xl"
+          className="text-3xl text-gray-300"
         >
           Innovating Embedded Systems & IoT Solutions
         </motion.p>
         <motion.button 
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, boxShadow: "0px 5px 20px rgba(0, 255, 150, 0.5)" }}
           whileTap={{ scale: 0.95 }}
           onClick={onContactClick}
           className="inline-block bg-gradient-to-r from-green-500 to-green-700 text-white font-bold px-8 py-3 rounded-lg shadow-lg hover:shadow-green-500/50 transition-all"

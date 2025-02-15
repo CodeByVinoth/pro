@@ -1,32 +1,16 @@
-import { motion } from 'framer-motion';
-import { Mail, Phone, Instagram, FileText } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Mail, Phone, Instagram, FileText } from "lucide-react";
 
 const contactItems = [
-  {
-    icon: Mail,
-    text: "wattstrons@gmail.com",
-    href: "mailto:wattstrons@gmail.com"
-  },
-  {
-    icon: Phone,
-    text: "9790646104",
-    href: "tel:+919790646104"
-  },
-  {
-    icon: Instagram,
-    text: "@wattstrons",
-    href: "https://instagram.com/wattstrons"
-  },
-  {
-    icon: FileText,
-    text: "Order Your Project",
-    href: "https://docs.google.com/forms/d/e/1FAIpQLSfA23HZlOoZygLTEbNKN8MXtmRN3G8OoNsTreEXnkKwkDNk8Q/viewform"
-  }
+  { icon: Mail, text: "wattstrons@gmail.com", href: "mailto:wattstrons@gmail.com" },
+  { icon: Phone, text: "9790646104", href: "tel:+919790646104" },
+  { icon: Instagram, text: "@wattstrons", href: "https://instagram.com/wattstrons" },
+  { icon: FileText, text: "Order Your Project", href: "https://docs.google.com/forms/d/e/1FAIpQLSfA23HZlOoZygLTEbNKN8MXtmRN3G8OoNsTreEXnkKwkDNk8Q/viewform" }
 ];
 
 export function Contact() {
   return (
-    <section className="min-h-screen pt-24 bg-black">
+    <section className="min-h-screen pt-24 bg-black flex items-center justify-center">
       <div className="container mx-auto px-4">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -35,7 +19,8 @@ export function Contact() {
         >
           Contact Us
         </motion.h2>
-        <div className="max-w-2xl mx-auto space-y-4">
+
+        <div className="max-w-2xl mx-auto space-y-6">
           {contactItems.map((item, index) => (
             <motion.a
               key={index}
@@ -44,12 +29,36 @@ export function Contact() {
               rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.2 }}
-              whileHover={{ scale: 1.05, x: 10 }}
-              className="flex items-center justify-center space-x-4 bg-gradient-to-r from-green-700 to-green-600 p-4 rounded-lg shadow-lg hover:shadow-green-500/50 transition-all"
+              transition={{ delay: index * 0.1 }}
+              whileHover={{
+                scale: 1.1,
+                y: -5,
+                boxShadow: "0px 10px 20px rgba(0, 255, 150, 0.3)"
+              }}
+              className="flex items-center justify-center space-x-4 p-5 rounded-xl shadow-lg transition-all relative overflow-hidden"
+              style={{
+                backdropFilter: "blur(12px)",
+                background: "rgba(255, 255, 255, 0.1)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+              }}
             >
-              <item.icon className="w-6 h-6" />
-              <span className="text-lg font-semibold">{item.text}</span>
+              <motion.div
+                whileHover={{ scale: 1.3, rotate: 10 }}
+                className="text-green-300"
+              >
+                <item.icon className="w-7 h-7" />
+              </motion.div>
+              <span className="text-lg font-semibold text-white">{item.text}</span>
+
+              {/* Glow Effect */}
+              <motion.div
+                className="absolute inset-0 rounded-xl opacity-50"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1, scale: 1.5 }}
+                style={{
+                  background: "radial-gradient(circle, rgba(0,255,150,0.2) 10%, transparent 70%)",
+                }}
+              />
             </motion.a>
           ))}
         </div>

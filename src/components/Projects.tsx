@@ -155,7 +155,7 @@ export function Projects() {
                 y: -5,
                 transition: { duration: 0.2 }
               }}
-              className="bg-gradient-to-br from-green-900 to-green-700 p-6 rounded-xl shadow-xl hover:shadow-green-500/20 transform-gpu"
+              className="bg-white/10 backdrop-blur-lg border border-white/20 p-6 rounded-xl shadow-xl hover:shadow-green-500/20 transform-gpu transition-all duration-300"
             >
               <motion.h3 
                 className="text-xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-green-300 to-blue-300"
@@ -166,7 +166,7 @@ export function Projects() {
                 {project.title}
               </motion.h3>
               <motion.p 
-                className="text-gray-200"
+                className="text-gray-300"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
