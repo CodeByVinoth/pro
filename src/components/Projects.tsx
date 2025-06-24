@@ -1,5 +1,32 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { 
+  Wifi, 
+  Bot, 
+  Shield, 
+  Settings, 
+  Battery, 
+  Heart, 
+  Cpu, 
+  Camera, 
+  Car, 
+  Flame, 
+  Sprout, 
+  Truck, 
+  Building, 
+  AlertTriangle, 
+  Thermometer,
+  Eye,
+  Fish,
+  Plug,
+  Headphones,
+  Wind,
+  Activity,
+  Home,
+  ShoppingCart,
+  Ambulance,
+  Warehouse
+} from 'lucide-react';
 import bgImage from '../assets/bg.webp';
 
 const projects = [
@@ -129,7 +156,6 @@ const projects = [
   }
 ];
 
-
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -141,6 +167,77 @@ export function Projects() {
     if (title.includes("Energy") || title.includes("Harvesting")) return "Energy";
     if (title.includes("Health") || title.includes("Heart")) return "Healthcare";
     return "Embedded System";
+  };
+
+  const getProjectIcon = (title) => {
+    // Energy projects
+    if (title.includes("Energy") || title.includes("Harvesting")) return Battery;
+    
+    // Fish/Aquarium related
+    if (title.includes("Fish") || title.includes("Aves")) return Fish;
+    
+    // Smart Plug
+    if (title.includes("Smart Plug")) return Plug;
+    
+    // Vehicle related
+    if (title.includes("Heavy Vehicle") || title.includes("EV")) return Truck;
+    if (title.includes("Bus")) return Car;
+    if (title.includes("Ambulance")) return Ambulance;
+    
+    // Communication/Gesture
+    if (title.includes("Gesture") || title.includes("Communication")) return Headphones;
+    
+    // Safety/Security/Emergency
+    if (title.includes("Accident") || title.includes("Emergency") || title.includes("Safety")) return AlertTriangle;
+    if (title.includes("Helmet") || title.includes("Rescue")) return Shield;
+    
+    // Gas/Fire related
+    if (title.includes("Gas") || title.includes("Fire")) return Flame;
+    
+    // Robots
+    if (title.includes("Robot")) return Bot;
+    
+    // Street Light
+    if (title.includes("Street Light")) return Eye;
+    
+    // Flood
+    if (title.includes("Flood")) return Wind;
+    
+    // Poultry/Farm
+    if (title.includes("Poultry") || title.includes("Agro") || title.includes("Greenhouse")) return Sprout;
+    
+    // Shopping/Trolley
+    if (title.includes("Trolley")) return ShoppingCart;
+    
+    // Museum
+    if (title.includes("Museum")) return Building;
+    
+    // Transportation/Cargo
+    if (title.includes("Cargo") || title.includes("Transportation")) return Warehouse;
+    
+    // Health/Heart related
+    if (title.includes("Heart") || title.includes("Health")) return Heart;
+    
+    // Camera/Door Lock
+    if (title.includes("Camera") || title.includes("Door Lock")) return Camera;
+    
+    // IoT/Smart systems
+    if (title.includes("IoT") || title.includes("Smart")) return Wifi;
+    
+    // Default
+    return Cpu;
+  };
+
+  const getIconColor = (category) => {
+    switch (category) {
+      case "IoT": return "text-blue-400";
+      case "Robotics": return "text-purple-400";
+      case "Safety": return "text-red-400";
+      case "Automation": return "text-green-400";
+      case "Energy": return "text-yellow-400";
+      case "Healthcare": return "text-pink-400";
+      default: return "text-indigo-400";
+    }
   };
 
   return (
@@ -197,16 +294,7 @@ export function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-block mb-6">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-xs uppercase tracking-widest text-blue-400 bg-blue-900/30 px-4 py-2 rounded-full mb-4 inline-block border border-blue-400/20"
-            >
-              Innovative Solutions
-            </motion.div>
-          </div>
+        
           <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 leading-tight">
             Cutting-Edge <br />Technology Projects
           </h2>
@@ -224,6 +312,8 @@ export function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => {
             const category = getProjectCategory(project.title);
+            const IconComponent = getProjectIcon(project.title);
+            const iconColor = getIconColor(category);
             
             return (
               <motion.div
@@ -249,7 +339,7 @@ export function Projects() {
                 {/* Glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                <div className="relative z-10 p-8 h-full flex flex-col" style={{ minHeight: '300px' }}>
+                <div className="relative z-10 p-8 h-full flex flex-col" style={{ minHeight: '350px' }}>
                   {/* Category badge */}
                   <div className="mb-4 self-start">
                     <span className={`px-3 py-1 text-xs font-medium rounded-full bg-blue-900/50 text-blue-300 border border-blue-500/30`}>
@@ -257,27 +347,63 @@ export function Projects() {
                     </span>
                   </div>
                   
+                  {/* Project Icon - Clean Animated */}
+                  <div className="flex justify-center mb-6">
+                    <motion.div 
+                      initial={{ scale: 0, rotate: -180, opacity: 0 }}
+                      animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                      transition={{ 
+                        delay: index * 0.1 + 0.3, 
+                        duration: 0.8, 
+                        type: "spring",
+                        stiffness: 100
+                      }}
+                      className="relative"
+                    >
+                      {/* Main icon with floating animation */}
+                      <motion.div
+                        animate={{
+                          y: [-2, 2, -2],
+                          rotate: [-5, 5, -5],
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                        whileHover={{ 
+                          scale: 1.2,
+                          rotate: 15,
+                          transition: { duration: 0.3 }
+                        }}
+                        className="relative z-10"
+                      >
+                        <IconComponent className={`w-12 h-12 ${iconColor} drop-shadow-lg opacity-80 group-hover:opacity-100 transition-opacity duration-300`} />
+                      </motion.div>
+                    </motion.div>
+                  </div>
+                  
                   {/* Project title */}
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors duration-300 text-center">
                     {project.title}
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-gray-300 mb-6 flex-grow line-clamp-3">
+                  <p className="text-gray-300 mb-6 flex-grow line-clamp-3 text-center">
                     {project.description}
                   </p>
                   
                   {/* View button */}
-                  <div className="flex justify-between items-center mt-auto">
+                  <div className="flex justify-center items-center mt-auto">
                     <motion.button 
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="relative overflow-hidden px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-medium shadow-lg"
+                      className="relative overflow-hidden px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-medium shadow-lg group/btn"
                     >
                       <span className="relative z-10 flex items-center">
                         View Details
                         <svg
-                          className="w-4 h-4 ml-2 text-white transition-transform group-hover:translate-x-1"
+                          className="w-4 h-4 ml-2 text-white transition-transform group-hover/btn:translate-x-1"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 20 20"
                           fill="currentColor"
@@ -289,11 +415,8 @@ export function Projects() {
                           />
                         </svg>
                       </span>
-                      <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                      <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></span>
                     </motion.button>
-                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">
-                      Click to explore
-                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -329,15 +452,45 @@ export function Projects() {
             </button>
             
             <div className="p-10">
-              {/* Category and title section */}
-              <div className="mb-8">
+              {/* Icon, Category and title section */}
+              <div className="mb-8 text-center">
+                {/* Large Clean Animated Icon */}
+                <div className="flex justify-center mb-6">
+                  <motion.div 
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.8, type: "spring" }}
+                    className="relative"
+                  >
+                    {/* Main icon */}
+                    <motion.div
+                      animate={{
+                        y: [-3, 3, -3],
+                        rotate: [-8, 8, -8],
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="relative z-10"
+                    >
+                      {(() => {
+                        const IconComponent = getProjectIcon(selectedProject.title);
+                        const iconColor = getIconColor(getProjectCategory(selectedProject.title));
+                        return <IconComponent className={`w-20 h-20 ${iconColor} drop-shadow-2xl`} />;
+                      })()}
+                    </motion.div>
+                  </motion.div>
+                </div>
+                
                 <span className={`px-3 py-1 text-sm font-medium rounded-full bg-blue-900/50 text-blue-300 border border-blue-500/30 inline-block mb-4`}>
                   {getProjectCategory(selectedProject.title)}
                 </span>
                 <h3 className="text-3xl font-bold text-white mb-6 leading-tight">
                   {selectedProject.title}
                 </h3>
-                <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mb-6"></div>
+                <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mb-6 mx-auto"></div>
               </div>
               
               {/* Main content */}

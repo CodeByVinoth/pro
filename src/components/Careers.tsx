@@ -5,7 +5,7 @@ export function Careers() {
   return (
     <section 
       id="contact" 
-      className="min-h-screen py-20 relative overflow-hidden"
+      className="min-h-screen pt-0 pb-20 relative overflow-hidden"
       style={{
         backgroundImage: `linear-gradient(rgba(10, 18, 37, 0.9), rgba(15, 23, 42, 0.9)), url(${bgImage})`,
         backgroundSize: 'cover',
@@ -14,7 +14,7 @@ export function Careers() {
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
-      
+
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -58,8 +58,7 @@ export function Careers() {
             transition={{ delay: 0.2 }}
             className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-blue-400 to-purple-500"
           >
-            <span className="inline-block">Work With</span>
-            <br />
+            <span className="inline-block">Work With </span>&nbsp;
             <span className="inline-block mt-2">Wattstrons</span>
           </motion.h2>
           <motion.p
@@ -72,9 +71,10 @@ export function Careers() {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <CareerCard />
           <CollaborationCard />
+          <WhyJoinCard />
         </div>
       </div>
     </section>
@@ -173,6 +173,41 @@ function CollaborationCard() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function WhyJoinCard() {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      className="p-8 rounded-3xl bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-700 shadow-xl"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.8 }}
+    >
+      <div className="flex items-start">
+        <div className="p-2 bg-purple-500/20 rounded-lg mr-4">
+          <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m-7 4h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h3 className="text-2xl font-bold text-purple-400 mb-3">Why Join Wattstrons?</h3>
+          <ul className="list-disc list-inside text-gray-300 space-y-1">
+            <li>Competitive compensation</li>
+            <li>Flexible work arrangements</li>
+            <li>Cutting-edge projects</li>
+            <li>Learning & growth opportunities</li>
+            <li>Stock options (for full-time)</li>
+            <li>Tech gadget allowances</li>
+            <li>Conference & training budgets</li>
+            <li>Dynamic team culture</li>
+          </ul>
         </div>
       </div>
     </motion.div>
