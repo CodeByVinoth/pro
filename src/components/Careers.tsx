@@ -68,15 +68,17 @@ export function Careers() {
             transition={{ delay: 0.5 }}
             className="text-xl text-gray-100 max-w-2xl mx-auto"
           >
-            Join our team or collaborate with us to build the future of <span className="text-green-400 font-medium">IoT</span> and <span className="text-blue-400 font-medium">automation</span>
+            Join our team to build the future of <span className="text-green-400 font-medium">IoT</span> and <span className="text-blue-400 font-medium">automation</span>
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <CareerCard />
-          <CollaborationCard />
-          <WhyJoinCard />
-        </div>
+       <div className="flex justify-center">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full">
+    <CareerCard />
+    <WhyJoinCard />
+  </div>
+</div>
+
       </div>
       <style>
         {`
@@ -197,38 +199,6 @@ function CareerCard() {
   );
 }
 
-function CollaborationCard() {
-  return (
-    <motion.div
-      whileHover={{ scale: 1.02 }}
-      className="bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3 }}
-    >
-      <h3 className="text-xl font-semibold text-cyan-400 mb-4">🚀 Project Collaboration</h3>
-      <p className="text-gray-200 mb-6 leading-relaxed">
-        Join forces with us on futuristic IoT & automation projects. We welcome bright minds and visionary organizations!
-      </p>
-
-      <div className="grid grid-cols-2 gap-4 text-sm text-gray-100">
-        <div className="bg-cyan-700/20 p-3 rounded-xl">
-          <span className="block font-medium">🏭 Industrial Automation</span>
-        </div>
-        <div className="bg-cyan-700/20 p-3 rounded-xl">
-          <span className="block font-medium">🏙 Smart City Solutions</span>
-        </div>
-        <div className="bg-cyan-700/20 p-3 rounded-xl">
-          <span className="block font-medium">📚 Educational Content</span>
-        </div>
-        <div className="bg-cyan-700/20 p-3 rounded-xl">
-          <span className="block font-medium">🧪 R&D Partnerships</span>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 function WhyJoinCard() {
   const perks = [
     { icon: '💰', label: 'Competitive Pay' },
@@ -249,12 +219,11 @@ function WhyJoinCard() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 }}
     >
-      <h3 className="text-xl font-semibold text-purple-400 mb-6">✨ Why Join Wattstrons?</h3>
+      <h3 className="text-xl font-semibold text-purple-400 mb-6">✨ Why Join Us?</h3>
       <div className="grid grid-cols-2 gap-4 text-sm text-gray-100">
-        {perks.map((item, idx) => (
-          <div key={idx} className="flex items-center bg-purple-700/20 p-3 rounded-xl">
-            <span className="text-lg mr-2">{item.icon}</span>
-            <span>{item.label}</span>
+        {perks.map(({ icon, label }) => (
+          <div key={label} className="bg-purple-700/20 p-3 rounded-xl">
+            <span className="block font-medium">{icon} {label}</span>
           </div>
         ))}
       </div>
