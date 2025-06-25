@@ -214,6 +214,10 @@ export function Contact() {
           </motion.div>
         </div>
       </div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1665430030077254"
+     crossOrigin="anonymous"></script>
     </section>
+    
   );
+  
 }
