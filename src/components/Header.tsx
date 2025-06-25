@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo.jpg";
 
 interface HeaderProps {
@@ -22,7 +22,6 @@ export function Header({ onNavClick, currentSection }: HeaderProps) {
   return (
     <header className="bg-black text-white py-4 px-6 fixed w-full top-0 z-50 shadow-lg">
       <nav className="flex justify-between items-center">
-        {/* Logo */}
         <div
           className="flex items-center space-x-2 text-2xl font-bold cursor-pointer"
           onClick={() => onNavClick("home")}
@@ -33,7 +32,6 @@ export function Header({ onNavClick, currentSection }: HeaderProps) {
           </span>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className="lg:hidden px-4 py-2 border border-green-400 rounded-xl text-white transition hover:scale-105 bg-black hover:border-green-500"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -41,43 +39,6 @@ export function Header({ onNavClick, currentSection }: HeaderProps) {
           {menuOpen ? "✖" : "☰ Menu"}
         </button>
 
-        {/* Mobile Menu */}
-        <motion.ul
-  initial={{ x: "-100%" }}
-  animate={{ x: menuOpen ? "0%" : "-100%" }}
-  transition={{ duration: 0.3 }}
-  className={`fixed top-0 left-0 w-1/3 max-h-[300px] 
-    bg-black-500 bg-opacity-20 backdrop-blur-lg shadow-lg 
-    flex flex-col items-center space-y-4 py-4 rounded-br-lg lg:hidden 
-    border border-green-400`}
->
-
-          {navItems.map((item, index) => (
-            <motion.li
-              key={item.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="w-full text-center"
-            >
-              <button
-                onClick={() => {
-                  onNavClick(item.id);
-                  setMenuOpen(false); // Close menu on click
-                }}
-                className={`px-4 py-2 border rounded-lg transition-all duration-300 transform hover:scale-105 ${
-                  currentSection === item.id
-                    ? "text-green-400 border-green-400"
-                    : "hover:text-green-300 border-black"
-                }`}
-              >
-                {item.label}
-              </button>
-            </motion.li>
-          ))}
-        </motion.ul>
-
-        {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center space-x-6">
           {navItems.map((item) => (
             <li key={item.id}>
@@ -95,6 +56,62 @@ export function Header({ onNavClick, currentSection }: HeaderProps) {
           ))}
         </ul>
       </nav>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ x: "100%", opacity: 0, rotateY: 90 }}
+            animate={{ x: 0, opacity: 1, rotateY: 0 }}
+            exit={{ x: "100%", opacity: 0, rotateY: 90 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="fixed top-0 right-0 w-[85%] max-w-xs h-full bg-black/70 backdrop-blur-md z-50 shadow-xl border-l border-green-400 rounded-l-2xl flex flex-col p-6"
+            style={{
+              boxShadow: "0 0 25px rgba(0, 255, 150, 0.4)",
+              backdropFilter: "blur(12px)",
+            }}
+          >
+            <div className="flex justify-end">
+              <motion.button
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setMenuOpen(false)}
+                className="text-white text-3xl font-bold hover:text-green-400 transition animate-pulse"
+              >
+                ✕
+              </motion.button>
+            </div>
+
+            <ul className="flex flex-col space-y-6 mt-8">
+              {navItems.map((item, index) => (
+                <motion.li
+                  key={item.id}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <motion.button
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0px 0px 15px rgba(0, 255, 150, 0.6)",
+                    }}
+                    onClick={() => {
+                      onNavClick(item.id);
+                      setMenuOpen(false);
+                    }}
+                    className={`w-full text-left text-lg font-semibold px-5 py-3 rounded-lg transition-all duration-300 bg-black/80 ${
+                      currentSection === item.id
+                        ? "text-green-400 border border-green-400"
+                        : "text-white border border-transparent hover:text-green-300 hover:border-green-300"
+                    }`}
+                  >
+                    {item.label}
+                  </motion.button>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

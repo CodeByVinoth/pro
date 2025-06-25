@@ -1,13 +1,17 @@
 import { motion } from "framer-motion";
 import bgImage from '../assets/bg.webp';
 import logoImage from '../assets/lab.png';
-import innovationIcon from '../assets/inovation.jpg';
-import educationIcon from '../assets/education.jpg';
-import productsIcon from '../assets/product.jpg';
+import { Lightbulb, BookOpen, Package } from "lucide-react";
 
 export function About() {
+  const features = [
+    { icon: <Lightbulb className="w-12 h-12 text-yellow-400 mx-auto mb-2" />, label: "Innovation" },
+    { icon: <BookOpen className="w-12 h-12 text-blue-400 mx-auto mb-2" />, label: "Education" },
+    { icon: <Package className="w-12 h-12 text-green-400 mx-auto mb-2" />, label: "Product" },
+  ];
+
   return (
-    <section 
+    <section
       className="min-h-screen pt-10 flex items-center relative overflow-hidden bg-gray-900"
       style={{
         backgroundImage: `url(${bgImage})`,
@@ -16,10 +20,10 @@ export function About() {
         backgroundAttachment: "fixed"
       }}
     >
-      {/* Gradient overlay with animated particles */}
+      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-950/80 via-gray-900/60 to-gray-900/80"></div>
-      
-      {/* Animated particles background */}
+
+      {/* Animated particles */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -79,8 +83,8 @@ export function About() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Image with floating effect */}
-          <motion.div 
+          {/* Image Column */}
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -112,15 +116,15 @@ export function About() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Content */}
+          {/* Content Column */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-8"
           >
-            {/* Mission Card */}
-            <motion.div 
+            {/* Mission */}
+            <motion.div
               whileHover={{ scale: 1.02 }}
               className="p-8 rounded-3xl bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-700 shadow-xl"
               initial={{ opacity: 0, y: 20 }}
@@ -144,8 +148,8 @@ export function About() {
               </div>
             </motion.div>
 
-            {/* Vision Card */}
-            <motion.div 
+            {/* Vision */}
+            <motion.div
               whileHover={{ scale: 1.02 }}
               className="p-8 rounded-3xl bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-700 shadow-xl"
               initial={{ opacity: 0, y: 20 }}
@@ -169,8 +173,8 @@ export function About() {
               </div>
             </motion.div>
 
-            {/* Unique Value Card */}
-            <motion.div 
+            {/* Unique Value */}
+            <motion.div
               whileHover={{ scale: 1.02 }}
               className="p-8 rounded-3xl bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-700 shadow-xl"
               initial={{ opacity: 0, y: 20 }}
@@ -190,73 +194,23 @@ export function About() {
                   <p className="text-gray-200 leading-relaxed mb-6">
                     Our distinctive blend of product development, education, and innovation sets us apart in the tech landscape.
                   </p>
-                  <div className="grid grid-cols-3 gap-4">
-                    <motion.div 
-                      whileHover={{ y: -5 }}
-                      className="text-center p-4 bg-gray-700/50 rounded-xl border border-gray-600 hover:border-green-400/30 transition-all"
-                    >
-                      <img
-                        src={innovationIcon}
-                        alt="Innovation"
-                        className="w-12 h-12 mx-auto mb-3"
-                      />
-                      <p className="text-sm font-medium text-gray-200">Innovation</p>
-                    </motion.div>
-                    <motion.div 
-                      whileHover={{ y: -5 }}
-                      className="text-center p-4 bg-gray-700/50 rounded-xl border border-gray-600 hover:border-blue-400/30 transition-all"
-                    >
-                      <img
-                        src={educationIcon}
-                        alt="Education"
-                        className="w-12 h-12 mx-auto mb-3"
-                      />
-                      <p className="text-sm font-medium text-gray-200">Education</p>
-                    </motion.div>
-                    <motion.div 
-                      whileHover={{ y: -5 }}
-                      className="text-center p-4 bg-gray-700/50 rounded-xl border border-gray-600 hover:border-purple-400/30 transition-all"
-                    >
-                      <img
-                        src={productsIcon}
-                        alt="Products"
-                        className="w-12 h-12 mx-auto mb-3"
-                      />
-                      <p className="text-sm font-medium text-gray-200">Products</p>
-                    </motion.div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {features.map((item, index) => (
+                      <motion.div
+                        key={index}
+                        whileHover={{ y: -5 }}
+                        className="text-center p-4 bg-gray-700/50 rounded-xl border border-gray-600 hover:border-green-400/30 transition-all"
+                      >
+                        {item.icon}
+                        <p className="mt-2 text-sm font-semibold">{item.label}</p>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
               </div>
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Stats Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
-        >
-          {[
-            { value: "30+", label: "Projects Completed" },
-            { value: "100%", label: "Client Satisfaction"},
-            { value: "∞", label: "Innovation Potential"},
-            { value: "24/7", label: "Dedicated Support"}
-          ].map((item, index) => (
-            <motion.div 
-              key={index}
-              whileHover={{ y: -5 }}
-              className="text-center p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700 backdrop-blur-sm shadow-lg"
-            >
-              <div className="text-3xl mb-3">{item.icon}</div>
-              <div className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500 mb-2">
-                {item.value}
-              </div>
-              <div className="text-sm font-medium text-gray-300">{item.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

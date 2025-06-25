@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import bgImage from '../assets/bg.webp';
+import React from 'react';
 
 export function Careers() {
   return (
@@ -77,6 +78,74 @@ export function Careers() {
           <WhyJoinCard />
         </div>
       </div>
+      <style>
+        {`
+          .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            touch-action: manipulation;
+          }
+
+          .button-85:before {
+            content: "";
+            background: linear-gradient(
+              45deg,
+              #ff0000,
+              #ff7300,
+              #fffb00,
+              #48ff00,
+              #00ffd5,
+              #002bff,
+              #7a00ff,
+              #ff00c8,
+              #ff0000
+            );
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+          }
+
+          @keyframes glowing-button-85 {
+            0% {
+              background-position: 0 0;
+            }
+            50% {
+              background-position: 400% 0;
+            }
+            100% {
+              background-position: 0 0;
+            }
+          }
+
+          .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #222;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+          }
+        `}
+      </style>
     </section>
   );
 }
@@ -113,17 +182,14 @@ function CareerCard() {
               <h4 className="font-bold text-gray-100">Technical Content Creator</h4>
               <p className="text-sm text-gray-300">Part-time | Remote</p>
             </div>
-          </div>
+          </div><br></br>
           <a 
             href="https://forms.gle/8nbEsvSeRjDV33CM6" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-full font-medium text-white hover:shadow-lg transition-all"
+            className="button-85"
           >
             Apply to Join
-            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
           </a>
         </div>
       </div>
@@ -133,46 +199,30 @@ function CareerCard() {
 
 function CollaborationCard() {
   return (
-    <motion.div 
+    <motion.div
       whileHover={{ scale: 1.02 }}
-      className="p-8 rounded-3xl bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-700 shadow-xl"
-      initial={{ opacity: 0, y: 20 }}
+      className="bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl"
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.6 }}
+      transition={{ delay: 0.3 }}
     >
-      <div className="flex items-start">
-        <div className="p-2 bg-blue-500/20 rounded-lg mr-4">
-          <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-          </div>
+      <h3 className="text-xl font-semibold text-cyan-400 mb-4">🚀 Project Collaboration</h3>
+      <p className="text-gray-200 mb-6 leading-relaxed">
+        Join forces with us on futuristic IoT & automation projects. We welcome bright minds and visionary organizations!
+      </p>
+
+      <div className="grid grid-cols-2 gap-4 text-sm text-gray-100">
+        <div className="bg-cyan-700/20 p-3 rounded-xl">
+          <span className="block font-medium">🏭 Industrial Automation</span>
         </div>
-        <div>
-          <h3 className="text-2xl font-bold text-blue-400 mb-3">Project Collaboration</h3>
-          <p className="text-gray-200 leading-relaxed mb-4">
-            We're always looking for talented individuals and organizations to collaborate with on exciting IoT and automation projects.
-          </p>
-          <div className="p-4 bg-gray-700/30 rounded-lg mb-4">
-            <h4 className="font-bold text-gray-100 mb-2">Collaboration Areas:</h4>
-            <ul className="list-disc list-inside text-gray-300 space-y-1">
-              <li>Industrial Automation Solutions</li>
-              <li>Smart Home/City Projects</li>
-              <li>Educational Content Development</li>
-              <li>Research & Development</li>
-            </ul>
-          </div>
-          <a 
-            href="https://forms.gle/YOUR_GOOGLE_FORM_ID" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full font-medium text-white hover:shadow-lg transition-all"
-          >
-            Collaborate with Us
-            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
+        <div className="bg-cyan-700/20 p-3 rounded-xl">
+          <span className="block font-medium">🏙 Smart City Solutions</span>
+        </div>
+        <div className="bg-cyan-700/20 p-3 rounded-xl">
+          <span className="block font-medium">📚 Educational Content</span>
+        </div>
+        <div className="bg-cyan-700/20 p-3 rounded-xl">
+          <span className="block font-medium">🧪 R&D Partnerships</span>
         </div>
       </div>
     </motion.div>
@@ -180,35 +230,33 @@ function CollaborationCard() {
 }
 
 function WhyJoinCard() {
+  const perks = [
+    { icon: '💰', label: 'Competitive Pay' },
+    { icon: '🕒', label: 'Flexible Hours' },
+    { icon: '🔬', label: 'Innovative Projects' },
+    { icon: '📈', label: 'Career Growth' },
+    { icon: '📦', label: 'Stock Options' },
+    { icon: '🎁', label: 'Gadget Allowance' },
+    { icon: '🎓', label: 'Training Budget' },
+    { icon: '🤝', label: 'Collaborative Culture' },
+  ];
+
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="p-8 rounded-3xl bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-700 shadow-xl"
-      initial={{ opacity: 0, y: 20 }}
+      className="bg-white/5 border border-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl"
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.8 }}
+      transition={{ delay: 0.5 }}
     >
-      <div className="flex items-start">
-        <div className="p-2 bg-purple-500/20 rounded-lg mr-4">
-          <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
-            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m-7 4h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
+      <h3 className="text-xl font-semibold text-purple-400 mb-6">✨ Why Join Wattstrons?</h3>
+      <div className="grid grid-cols-2 gap-4 text-sm text-gray-100">
+        {perks.map((item, idx) => (
+          <div key={idx} className="flex items-center bg-purple-700/20 p-3 rounded-xl">
+            <span className="text-lg mr-2">{item.icon}</span>
+            <span>{item.label}</span>
           </div>
-        </div>
-        <div>
-          <h3 className="text-2xl font-bold text-purple-400 mb-3">Why Join Wattstrons?</h3>
-          <ul className="list-disc list-inside text-gray-300 space-y-1">
-            <li>Competitive compensation</li>
-            <li>Flexible work arrangements</li>
-            <li>Cutting-edge projects</li>
-            <li>Learning & growth opportunities</li>
-            <li>Stock options (for full-time)</li>
-            <li>Tech gadget allowances</li>
-            <li>Conference & training budgets</li>
-            <li>Dynamic team culture</li>
-          </ul>
-        </div>
+        ))}
       </div>
     </motion.div>
   );
