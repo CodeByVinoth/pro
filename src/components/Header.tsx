@@ -28,7 +28,7 @@ export function Header({ onNavClick, currentSection }: HeaderProps) {
         >
           <img src={logo} alt="Logo" className="h-12 w-12 animate-spin-slow" />
           <span className="hover:text-green-400 transition-colors duration-300">
-            Wattstrons Automations
+            Wattstrons 
           </span>
         </div>
 

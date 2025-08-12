@@ -1,13 +1,22 @@
 import { motion } from "framer-motion";
-import bgImage from '../assets/bg.webp';
-import logoImage from '../assets/lab.png';
+import bgImage from "../assets/bg.webp";
+import logoImage from "../assets/lab.png";
 import { Lightbulb, BookOpen, Package } from "lucide-react";
 
 export function About() {
   const features = [
-    { icon: <Lightbulb className="w-12 h-12 text-yellow-400 mx-auto mb-2" />, label: "Innovation" },
-    { icon: <BookOpen className="w-12 h-12 text-blue-400 mx-auto mb-2" />, label: "Education" },
-    { icon: <Package className="w-12 h-12 text-green-400 mx-auto mb-2" />, label: "Product" },
+    {
+      icon: <Lightbulb className="w-12 h-12 text-yellow-400 mx-auto mb-2" />,
+      label: "Innovation",
+    },
+    {
+      icon: <BookOpen className="w-12 h-12 text-blue-400 mx-auto mb-2" />,
+      label: "Education",
+    },
+    {
+      icon: <Package className="w-12 h-12 text-green-400 mx-auto mb-2" />,
+      label: "Product",
+    },
   ];
 
   return (
@@ -17,7 +26,7 @@ export function About() {
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundAttachment: "fixed"
+        backgroundAttachment: "fixed",
       }}
     >
       {/* Gradient overlay */}
@@ -34,7 +43,7 @@ export function About() {
               y: Math.random() * 100,
               width: Math.random() * 10 + 5,
               height: Math.random() * 10 + 5,
-              opacity: 0
+              opacity: 0,
             }}
             animate={{
               x: Math.random() * 100,
@@ -43,8 +52,8 @@ export function About() {
               transition: {
                 duration: Math.random() * 10 + 10,
                 repeat: Infinity,
-                repeatType: "reverse"
-              }
+                repeatType: "reverse",
+              },
             }}
           />
         ))}
@@ -66,19 +75,23 @@ export function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-blue-400 to-purple-500"
+            className="text-5xl md:text-6xl font-bold mb-6 leading-tight md:leading-[1.2] pb-1 bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-blue-400 to-purple-500"
           >
             <span className="inline-block">Empowering the Future</span>
             <br />
             <span className="inline-block mt-2">with IoT Intelligence</span>
           </motion.h2>
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             className="text-xl text-gray-100 max-w-2xl mx-auto"
           >
-            Where <span className="text-green-400 font-medium">technology</span> meets <span className="text-blue-400 font-medium">education</span> to build the future of <span className="text-purple-400 font-medium">automation</span>
+            Where <span className="text-green-400 font-medium">technology</span>{" "}
+            meets <span className="text-blue-400 font-medium">education</span>{" "}
+            to build the future of{" "}
+            <span className="text-purple-400 font-medium">automation</span>
           </motion.p>
         </motion.div>
 
@@ -95,16 +108,16 @@ export function About() {
               className="absolute inset-0 rounded-3xl overflow-hidden border-2 border-gray-600/30 shadow-2xl shadow-green-500/20"
               animate={{
                 boxShadow: [
-                  '0 25px 50px -12px rgba(74, 222, 128, 0.1)',
-                  '0 25px 50px -12px rgba(96, 165, 250, 0.2)',
-                  '0 25px 50px -12px rgba(168, 85, 247, 0.1)',
-                  '0 25px 50px -12px rgba(74, 222, 128, 0.1)'
-                ]
+                  "0 25px 50px -12px rgba(74, 222, 128, 0.1)",
+                  "0 25px 50px -12px rgba(96, 165, 250, 0.2)",
+                  "0 25px 50px -12px rgba(168, 85, 247, 0.1)",
+                  "0 25px 50px -12px rgba(74, 222, 128, 0.1)",
+                ],
               }}
               transition={{
                 duration: 8,
                 repeat: Infinity,
-                repeatType: "reverse"
+                repeatType: "reverse",
               }}
             >
               <img
@@ -125,7 +138,11 @@ export function About() {
           >
             {/* Mission */}
             <motion.div
-              whileHover={{ scale: 1.02 }}
+              whileHover={{
+                scale: 1.02,
+                boxShadow:
+                  "0 0 10px #10b981, 0 0 20px #10b981, 0 0 30px #10b981",
+              }}
               className="p-8 rounded-3xl bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-700 shadow-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -134,15 +151,31 @@ export function About() {
               <div className="flex items-start">
                 <div className="p-2 bg-green-500/20 rounded-lg mr-4">
                   <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-green-400 mb-3">Our Mission</h3>
-                  <p className="text-gray-200 leading-relaxed">
-                    To innovate tech solutions and build talent for tomorrow. We empower industries with cutting-edge embedded systems and IoT solutions that improve efficiency, enhance connectivity, and solve real-world challenges.
+                  <h3 className="text-2xl font-bold text-green-400 mb-3">
+                    Our Mission
+                  </h3>
+                  <p className="text-gray-200 leading-relaxed text-justify">
+                    To innovate technology solutions and build talent for
+                    tomorrow. We empower industries with cutting-edge embedded
+                    systems, IoT, and software solutions that improve
+                    efficiency, enhance connectivity, and solve real-world
+                    challenges.
                   </p>
                 </div>
               </div>
@@ -150,7 +183,11 @@ export function About() {
 
             {/* Vision */}
             <motion.div
-              whileHover={{ scale: 1.02 }}
+              whileHover={{
+                scale: 1.02,
+                boxShadow:
+                  "0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 30px #3b82f6",
+              }}
               className="p-8 rounded-3xl bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-700 shadow-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -159,15 +196,29 @@ export function About() {
               <div className="flex items-start">
                 <div className="p-2 bg-blue-500/20 rounded-lg mr-4">
                   <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                      />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-blue-400 mb-3">Our Vision</h3>
-                  <p className="text-gray-200 leading-relaxed">
-                    To be a leader in embedded and IoT-based automation, revolutionizing industries through intelligent solutions that drive sustainable progress and shape a smarter, more connected future.
+                  <h3 className="text-2xl font-bold text-blue-400 mb-3">
+                    Our Vision
+                  </h3>
+                  <p className="text-gray-200 leading-relaxed text-justify">
+                    To shape the future of intelligent technology through
+                    innovative embedded systems, IoT, and software solutions
+                    that advance industries and enrich everyday life.
                   </p>
                 </div>
               </div>
@@ -184,15 +235,28 @@ export function About() {
               <div className="flex items-start">
                 <div className="p-2 bg-purple-500/20 rounded-lg mr-4">
                   <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
                     </svg>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-purple-400 mb-3">Why Wattstrons is Unique</h3>
+                  <h3 className="text-2xl font-bold text-purple-400 mb-3">
+                    Why Wattstrons is Unique
+                  </h3>
                   <p className="text-gray-200 leading-relaxed mb-6">
-                    Our distinctive blend of product development, education, and innovation sets us apart in the tech landscape.
+                    Our distinctive blend of product development, education, and
+                    innovation sets us apart in the tech landscape.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     {features.map((item, index) => (
@@ -202,7 +266,9 @@ export function About() {
                         className="text-center p-4 bg-gray-700/50 rounded-xl border border-gray-600 hover:border-green-400/30 transition-all"
                       >
                         {item.icon}
-                        <p className="mt-2 text-sm font-semibold">{item.label}</p>
+                        <p className="mt-2 text-sm font-semibold">
+                          {item.label}
+                        </p>
                       </motion.div>
                     ))}
                   </div>

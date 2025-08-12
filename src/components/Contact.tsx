@@ -15,7 +15,7 @@ const contactItems = [
   {
     icon: FaPhoneAlt,
     label: "Call or WhatsApp",
-    text: "+91 9025571824",
+    text: "9025571824",
     href: "https://wa.me/919025571824?text=Hi%20Wattstrons",
     color: "bg-gradient-to-r from-green-500 to-teal-600"
   },
@@ -29,8 +29,8 @@ const contactItems = [
   {
     icon: FaLinkedin,
     label: "Connect on LinkedIn",
-    text: "Wattstrons Automations",
-    href: "https://www.linkedin.com/company/wattstrons-automations",
+    text: "Wattstrons",
+    href: "https://www.linkedin.com/in/wattstrons/",
     color: "bg-gradient-to-r from-sky-600 to-blue-700"
   },
   {
