@@ -6,7 +6,7 @@ export function Careers() {
   return (
     <section 
       id="contact" 
-      className="min-h-screen pt-0 pb-20 relative overflow-hidden"
+      className="h-auto pt-0 pb-8 relative overflow-hidden"
       style={{
         backgroundImage: `linear-gradient(rgba(10, 18, 37, 0.9), rgba(15, 23, 42, 0.9)), url(${bgImage})`,
         backgroundSize: 'cover',

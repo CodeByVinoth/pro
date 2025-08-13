@@ -21,7 +21,7 @@ export function About() {
 
   return (
     <section
-      className="min-h-screen pt-10 flex items-center relative overflow-hidden bg-gray-900"
+      className="min-h-screen pt-10 flex items-center relative overflow-vissible bg-gray-900"
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
@@ -225,56 +225,70 @@ export function About() {
             </motion.div>
 
             {/* Unique Value */}
+<motion.div
+  whileHover={{
+    scale: 1.02,
+    boxShadow:
+      "0 0 10px #a855f7, 0 0 20px #a855f7, 0 0 30px #a855f7",
+  }}
+  className="p-8 rounded-3xl bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-700 shadow-xl"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.8 }}
+>
+  <div className="flex items-start">
+    <div className="p-2 bg-purple-500/20 rounded-lg mr-4">
+      <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+        <svg
+          className="w-4 h-4 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M13 10V3L4 14h7v7l9-11h-7z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div>
+      <h3 className="text-2xl font-bold text-purple-400 mb-3">
+        Why Wattstrons is Unique
+      </h3>
+      <p className="text-gray-200 leading-relaxed mb-6">
+        Our distinctive blend of product development, education, and
+        innovation sets us apart in the tech landscape.
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {features.map((item, index) => {
+          // Assign glow colors based on feature type
+          const glowColors = [
+            "0 0 10px #facc15, 0 0 20px #facc15, 0 0 30px #facc15", // Innovation (yellow)
+            "0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 30px #3b82f6", // Education (blue)
+            "0 0 10px #22c55e, 0 0 20px #22c55e, 0 0 30px #22c55e", // Product (green)
+          ];
+          return (
             <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="p-8 rounded-3xl bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-700 shadow-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
+              key={index}
+              whileHover={{
+                y: -5,
+                boxShadow: glowColors[index],
+              }}
+              className="text-center p-4 bg-gray-700/50 rounded-xl border border-gray-600 transition-all"
             >
-              <div className="flex items-start">
-                <div className="p-2 bg-purple-500/20 rounded-lg mr-4">
-                  <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-purple-400 mb-3">
-                    Why Wattstrons is Unique
-                  </h3>
-                  <p className="text-gray-200 leading-relaxed mb-6">
-                    Our distinctive blend of product development, education, and
-                    innovation sets us apart in the tech landscape.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    {features.map((item, index) => (
-                      <motion.div
-                        key={index}
-                        whileHover={{ y: -5 }}
-                        className="text-center p-4 bg-gray-700/50 rounded-xl border border-gray-600 hover:border-green-400/30 transition-all"
-                      >
-                        {item.icon}
-                        <p className="mt-2 text-sm font-semibold">
-                          {item.label}
-                        </p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              {item.icon}
+              <p className="mt-2 text-sm font-semibold">{item.label}</p>
             </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</motion.div>
+
           </motion.div>
         </div>
       </div>

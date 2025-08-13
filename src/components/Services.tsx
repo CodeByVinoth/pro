@@ -234,14 +234,14 @@ const clientServices = [
     id: "websiteDev",
     icon: Globe,
     title: "Website Development",
-    description: "Modern, responsive websites & web apps",
+    description: "Modern, fully responsive websites and dynamic web applications ",
     image: webDevImg
   },
   {
     id: "appDev",
     icon: Smartphone,
     title: "App Development",
-    description: "Cross-platform mobile apps (iOS/Android)",
+    description: "Cross-platform mobile applications for iOS and Android devices",
     image: appDevImg
   },
   {
@@ -453,7 +453,7 @@ export function Services() {
 
                 <p className="text-gray-300 mb-6">{service.description}</p>
 
-                <div className="flex space-x-3">
+                <div className="flex justify-center space-x-3">
                   <button
                     onClick={() => handleMoreInfo(service.id)}
                     className="px-4 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-lg hover:opacity-90 transition-opacity"

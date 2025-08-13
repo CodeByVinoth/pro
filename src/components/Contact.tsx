@@ -66,7 +66,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen py-20 relative overflow-hidden"
+      className="h-auto py-20 relative overflow-hidden"
       style={{
         backgroundImage: `linear-gradient(rgba(10, 18, 37, 0.9), rgba(15, 23, 42, 0.9)), url(${bgImage})`,
         backgroundSize: 'cover',
@@ -74,6 +74,8 @@ export function Contact() {
         backgroundAttachment: 'fixed'
       }}
     >
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-gray-900/80"></div>
+
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-dot-pattern"></div>
       </div>
